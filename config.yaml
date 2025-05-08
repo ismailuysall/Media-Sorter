@@ -1,0 +1,42 @@
+source: /path/to/source
+destination: /path/to/destination
+database: /path/to/archive_migration.db
+log: /path/to/migration_log.txt
+supported_extensions:
+  - .jpg
+  - .jpeg
+  - .png
+  - .mp4
+  - .mov
+  - .avi
+  - .mkv
+  - .m2t
+  - .heic
+  - JPG
+  - IMG_
+  - MVI_
+  - MVC
+  - CAN_
+  - MG
+  - DSC_
+  - NDC_
+  - _DSC
+  - DSC
+  - ILCE-
+  - HDR
+  - MOV
+  - DSCF
+  - FUJI
+  - _DSF
+  - LUMIX_
+  - OMD_
+  - PENTX
+  - LEICA_
+  - GR_
+  - SAM_
+  - GOPR
+  - GP_
+  - DJI_
+  - IMG-
+  - PXL_
+  - Screenshot_
