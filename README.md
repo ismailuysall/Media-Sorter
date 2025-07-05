@@ -1,79 +1,116 @@
-# Media Sorter
+# Media Sorter 📸🎥
 
-Python script to automatically organize photos and videos from a source directory into a date-based archive structure. Files are sorted into:
+![Media Sorter](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-brightgreen)
 
-- `PHOTO/YYYY/MM` or `VIDEO/YYYY/MM`
-- `PHOTO_DUPLICATES` or `VIDEO_DUPLICATES`
-- `ToReview`: files with no EXIF metadata or recognizable date in filename.
+Welcome to **Media Sorter**, a Python script designed to help you automatically organize your photos and videos into a neat, date-based archive structure. This tool simplifies the management of your media files, making it easy to locate and enjoy your memories.
 
-## Features
+## Table of Contents
 
-- Extracts date with priority:
-  1. `DateTimeOriginal` (EXIF)
-  2. `CreateDate` (EXIF)
-  3. Recognizable date in filename
-- SHA256 hashing to detect duplicates
-- Automatically renames files with identical names using numeric suffixes
-- Duplicate files are copied, not deleted — cleanup is left to the user
-- Migration log stored in SQLite
-- Detailed logging
-- Available disk space check before copying
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [How It Works](#how-it-works)
+- [Topics](#topics)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
-Note
+- **Automatic Organization**: Automatically sorts photos and videos into folders based on their date.
+- **Duplicate Detection**: Identifies and manages duplicate files to save space.
+- **EXIF Data Extraction**: Utilizes EXIF metadata to determine the date and time of media files.
+- **User-Friendly**: Simple to use with clear instructions.
+- **Cross-Platform**: Works on any operating system that supports Python.
 
-- If a file with the same name already exists in the duplicate destination folder, a numeric suffix will be added automatically (e.g., IMG_1234__1.jpg).
-- Duplicate files are not deleted by this script. It is up to the user to review and manage them as needed.
+## Getting Started
 
-## Requirements
+To get started with Media Sorter, you need to download the latest release. Visit the [Releases](https://github.com/ismailuysall/Media-Sorter/releases) section to download the script. After downloading, follow the steps below to set it up.
 
-- Python 3.7+
-- [ExifTool](https://exiftool.org/)
-- `pip install tqdm pyyaml`
+### Prerequisites
 
-## Configuration
+Make sure you have the following installed on your system:
 
-Edit `config.yaml` with your paths:
+- Python 3.x
+- pip (Python package installer)
 
-```yaml
-source: /path/to/source
-destination: /path/to/destination
-database: /path/to/archive_migration.db
-log: /path/to/migration_log.txt
-supported_extensions:
-  - .jpg
-  - .mp4
-  ...
-```
+### Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ismailuysall/Media-Sorter.git
+   cd Media-Sorter
+   ```
+
+2. **Install Required Packages**:
+   Use pip to install the necessary packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Download the Latest Release**:
+   Go to the [Releases](https://github.com/ismailuysall/Media-Sorter/releases) section to download the latest version of the script.
 
 ## Usage
 
-To scan and sort:
+Once you have set up the Media Sorter, you can run it using the command line. Here's how:
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you downloaded the script.
+3. Run the script with the following command:
+   ```bash
+   python media_sorter.py <source_directory> <destination_directory>
+   ```
+
+Replace `<source_directory>` with the path to the folder containing your media files, and `<destination_directory>` with the path where you want to save the organized files.
+
+### Example
 
 ```bash
-python3 media_sorter.py
+python media_sorter.py /path/to/source /path/to/destination
 ```
 
-To reset the new environment (delete database, logs, output):
+## How It Works
 
-```bash
-python3 media_sorter.py --reset
-```
+Media Sorter uses EXIF data embedded in your media files to determine the date they were taken. It then creates a folder structure based on the year, month, and day. This structure makes it easy to find and view your photos and videos.
 
-## Directory structure generated
+### Steps Involved
 
-```
-Archive/
-├── PHOTO/
-│   └── 2024/04/IMG_1234.jpg
-├── VIDEO/
-│   └── 2023/12/VID_4567.mp4
-├── PHOTO_DUPLICATES/
-├── VIDEO_DUPLICATES/
-└── ToReview/
-```
+1. **File Scanning**: The script scans the source directory for all media files.
+2. **EXIF Data Extraction**: It extracts the EXIF metadata to get the creation date of each file.
+3. **Folder Creation**: Based on the extracted dates, the script creates a corresponding folder structure in the destination directory.
+4. **File Moving**: Finally, it moves the files into their respective folders.
+
+## Topics
+
+This project covers various topics relevant to media organization and management. Here are some key topics associated with Media Sorter:
+
+- **Duplicate Detection**: The script identifies duplicate media files to prevent clutter.
+- **EXIF Data Extraction**: It extracts EXIF metadata to gather important information about each file.
+- **File Management**: The tool simplifies the process of managing large collections of media.
+- **Python**: The script is written in Python, making it accessible and easy to modify.
+
+## Contributing
+
+We welcome contributions to Media Sorter! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Submit a pull request.
+
+Your contributions help improve the project and make it more useful for everyone.
 
 ## License
 
-MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Contact
+
+For questions or feedback, please feel free to reach out:
+
+- **Email**: [your_email@example.com](mailto:your_email@example.com)
+- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
+
+Thank you for using Media Sorter! We hope it helps you keep your media files organized. For more information, visit the [Releases](https://github.com/ismailuysall/Media-Sorter/releases) section to download the latest version and explore the features.
